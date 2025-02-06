@@ -15,6 +15,10 @@ func main() {
 	// Создаём команду с явным указанием shell
 	cmd := exec.Command("/bin/bash", scriptPath)
 
+	// Перенаправляем stdout и stderr на консоль
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
 	// Запускаем скрипт
 	err := cmd.Run()
 	if err != nil {
