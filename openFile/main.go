@@ -6,7 +6,10 @@ import (
 )
 
 func main() {
+	log.Println("Start program ")
 	cmd := exec.Command("./script.sh")
+
+	log.Println("Command in cmd: ", cmd)
 
 	err := cmd.Run()
 	if err != nil {
