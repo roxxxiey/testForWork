@@ -2,22 +2,28 @@ package main
 
 import (
 	"fmt"
+	"github.com/ilyakaznacheev/cleanenv"
 	probing "github.com/prometheus-community/pro-bing"
 	"log"
 	"time"
 )
 
-const (
-	startIP = "10.100.207."
-)
+type Settings struct {
+	IP string `yaml:"start"`
+}
+
+var cfg = new(Settings)
 
 func main() {
 	fmt.Println("Hello World")
+
+	_ = cleanenv.ReadConfig("config.yaml", &cfg)
+
 	ends := [10]string{"40", "41", "42", "43", "30", "31", "32", "33", "20", "21"}
 	for _, item := range ends {
-		err := pingIp(startIP + item)
+		err := pingIp(cfg.IP + item)
 		if err != nil {
-			log.Println("Ping IP "+startIP+item+" failed: ", err)
+			log.Println("Ping IP "+cfg.IP+item+" failed: ", err)
 		}
 	}
 }
