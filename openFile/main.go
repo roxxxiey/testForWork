@@ -16,4 +16,6 @@ func main() {
 		log.Print("Error executing script.sh: ", err)
 		log.Fatal()
 	}
+
+	log.Println("End program ")
 }
