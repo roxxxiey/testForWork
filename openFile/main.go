@@ -10,10 +10,10 @@ func main() {
 	fmt.Println("Start program")
 
 	// Получаем полный путь к скрипту
-	scriptPath := "./script.sh"
+	scriptPath := "./pingNAP"
 
 	// Создаём команду с явным указанием shell
-	cmd := exec.Command("/bin/bash", scriptPath)
+	cmd := exec.Command("sudo", scriptPath)
 
 	// Перенаправляем stdout и stderr на консоль
 	cmd.Stdout = os.Stdout
